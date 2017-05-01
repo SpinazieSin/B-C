@@ -1,0 +1,23 @@
+delta_v <- function(a,b, v_max, v){
+	dv = a*b*(v_max-v)
+	return(dv)
+}
+
+next_v <- function(v_0, dv){
+	v_1 = v_0 + dv
+	return(v_1)
+}
+
+loop_count = 10
+v_result = c(1:10)
+v = 0
+a = 0.4
+b = 1
+v_max = 100
+for (i in 1:loop_count) {
+	v = next_v(v, delta_v(a, b, v_max, v))
+	v_result[i] = v
+}
+help(plot)
+plot(v_result)
+# plot(v_result, type='p')
